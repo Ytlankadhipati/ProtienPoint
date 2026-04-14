@@ -1,6 +1,6 @@
 $(function () {
 
-    // Header Scroll
+    // ================= HEADER SCROLL =================
     $(window).scroll(function () {
         if ($(window).scrollTop() >= 60) {
             $("header").addClass("fixed-header");
@@ -9,16 +9,15 @@ $(function () {
         }
     });
 
-    // Tooltip
-    const tooltipTriggerList = Array.from(
-        document.querySelectorAll('[data-bs-toggle="tooltip"]')
-    );
-    tooltipTriggerList.forEach((tooltipTriggerEl) => {
-        new bootstrap.Tooltip(tooltipTriggerEl);
+
+    // ================= TOOLTIP =================
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+    tooltipTriggerList.forEach((el) => {
+        new bootstrap.Tooltip(el);
     });
 
 
-    // Count
+    // ================= COUNT =================
     $('.count').each(function () {
         $(this).prop('Counter', 0).animate({
             Counter: $(this).text()
@@ -32,7 +31,7 @@ $(function () {
     });
 
 
-    // ScrollToTop
+    // ================= SCROLL TO TOP =================
     function scrollToTop() {
         window.scrollTo({
             top: 0,
@@ -41,28 +40,31 @@ $(function () {
     }
 
     const btn = document.getElementById("scrollToTopBtn");
-    btn.addEventListener("click", scrollToTop);
 
-    window.onscroll = function () {
-        const btn = document.getElementById("scrollToTopBtn");
-        if (document.documentElement.scrollTop > 100 || document.body.scrollTop > 100) {
-            btn.style.display = "flex";
-        } else {
-            btn.style.display = "none";
-        }
-    };
+    // ✅ SAFE CHECK
+    if (btn) {
+        btn.addEventListener("click", scrollToTop);
 
-
-    // Aos
-    AOS.init({
-        once: true,
-    });
+        window.addEventListener("scroll", function () {
+            if (document.documentElement.scrollTop > 100 || document.body.scrollTop > 100) {
+                btn.style.display = "flex";
+            } else {
+                btn.style.display = "none";
+            }
+        });
+    }
 
 
-    // Scroll
+    // ================= AOS =================
+    if (typeof AOS !== "undefined") {
+        AOS.init({
+            once: true,
+        });
+    }
+
+
+    // ================= NAV HIGHLIGHT =================
     const sections = document.querySelectorAll("section[id]");
-
-    window.addEventListener("scroll", navHighlighter);
 
     function navHighlighter() {
 
@@ -71,18 +73,32 @@ $(function () {
         sections.forEach(current => {
             const sectionHeight = current.offsetHeight;
             const sectionTop = current.offsetTop - 100;
-            sectionId = current.getAttribute("id");
+            const sectionId = current.getAttribute("id");
+
+            if (!sectionId) return;
+
+            const navLink = document.querySelector(
+                `.navbar-collapse a[href*="${sectionId}"]`
+            );
+
+            // ✅ MOST IMPORTANT FIX
+            if (!navLink) return;
 
             if (
                 scrollY > sectionTop &&
                 scrollY <= sectionTop + sectionHeight
             ) {
-                document.querySelector(".navbar-collapse a[href*=" + sectionId + "]").classList.add("active");
+                navLink.classList.add("active");
             } else {
-                document.querySelector(".navbar-collapse a[href*=" + sectionId + "]").classList.remove("active");
+                navLink.classList.remove("active");
             }
         });
     }
 
-});
+    // Run safely
+    if (sections.length) {
+        window.addEventListener("scroll", navHighlighter);
+        navHighlighter();
+    }
 
+});
