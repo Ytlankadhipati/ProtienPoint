@@ -78,93 +78,92 @@
           <div class="card">
             <div class="card-body">
     
-              <form>
+              <form action="send_mail.php" method="POST">
                 <div class="row">
-    
+              
                   <!-- NAME -->
                   <div class="col-lg-6">
                     <div class="mb-4 mb-lg-10">
                       <label for="name" class="form-label">Your Name</label>
-                      <input type="text" name="name" id="name" placeholder="Enter your name" class="form-control">
+                      <input type="text" name="name" id="name" placeholder="Enter your name" class="form-control" required>
                     </div>
                   </div>
-    
+              
                   <!-- EMAIL -->
                   <div class="col-lg-6">
                     <div class="mb-4 mb-lg-10">
                       <label for="email" class="form-label">Your Email</label>
-                      <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                      <input type="email" name="email" id="email" placeholder="Enter your email" class="form-control" required>
                     </div>
                   </div>
-    
+              
                   <!-- PHONE -->
                   <div class="col-lg-6">
                     <div class="mb-4 mb-lg-10">
                       <label for="phone" class="form-label">Phone Number</label>
-                      <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number">
+                      <input type="tel" name="phone" id="phone" placeholder="Enter your phone number" class="form-control" required>
                     </div>
                   </div>
-    
+              
                   <!-- INTEREST -->
                   <div class="col-lg-6">
                     <div class="mb-4 mb-lg-10">
                       <label for="product" class="form-label">What are you looking for?</label>
-                      <select class="form-select" id="product">
-                        <option selected>Select option</option>
-                        <option>Whey Protein</option>
-                        <option>Mass Gainer</option>
-                        <option>Pre-Workout</option>
-                        <option>Fat Burner</option>
-                        <option>General Inquiry</option>
+                      <select class="form-select" id="product" name="product" required>
+                        <option value="">Select option</option>
+                        <option value="Whey Protein">Whey Protein</option>
+                        <option value="Mass Gainer">Mass Gainer</option>
+                        <option value="Pre-Workout">Pre-Workout</option>
+                        <option value="Fat Burner">Fat Burner</option>
+                        <option value="General Inquiry">General Inquiry</option>
                       </select>
                     </div>
                   </div>
-    
+              
                   <!-- GOAL -->
                   <div class="col-lg-6">
                     <div class="mb-4 mb-lg-10">
                       <label for="goal" class="form-label">Your Fitness Goal</label>
-                      <select class="form-select" id="goal">
-                        <option selected>Select your goal</option>
-                        <option>Muscle Gain</option>
-                        <option>Weight Loss</option>
-                        <option>Strength Building</option>
-                        <option>General Fitness</option>
+                      <select class="form-select" id="goal" name="goal" required>
+                        <option value="">Select your goal</option>
+                        <option value="Muscle Gain">Muscle Gain</option>
+                        <option value="Weight Loss">Weight Loss</option>
+                        <option value="Strength Building">Strength Building</option>
+                        <option value="General Fitness">General Fitness</option>
                       </select>
                     </div>
                   </div>
-    
+              
                   <!-- EXPERIENCE -->
                   <div class="col-lg-6">
                     <div class="mb-4 mb-lg-10">
                       <label for="experience" class="form-label">Your Experience Level</label>
-                      <select class="form-select" id="experience">
-                        <option selected>Select level</option>
-                        <option>Beginner</option>
-                        <option>Intermediate</option>
-                        <option>Advanced</option>
+                      <select class="form-select" id="experience" name="experience" required>
+                        <option value="">Select level</option>
+                        <option value="Beginner">Beginner</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Advanced">Advanced</option>
                       </select>
                     </div>
                   </div>
-    
+              
                   <!-- MESSAGE -->
                   <div class="col-12">
                     <div class="mb-4 mb-lg-10">
                       <label for="message" class="form-label">Message</label>
                       <textarea name="message" id="message" class="form-control" rows="4"
-                        placeholder="Tell us your requirement or ask anything..."></textarea>
+                        placeholder="Tell us your requirement or ask anything..." required></textarea>
                     </div>
                   </div>
-    
+              
                 </div>
-    
+              
                 <!-- BUTTON -->
                 <button type="submit" class="btn btn-dark mx-auto">
                   <span class="btn-text">Get Expert Advice</span>
                   <iconify-icon icon="solar:arrow-right-up-linear"
                     class="btn-icon bg-white text-dark round-32 rounded-circle hstack justify-content-center fs-6"></iconify-icon>
                 </button>
-    
               </form>
     
             </div>

@@ -21037,3 +21037,30 @@ ul {
   font-size: 22px;
   font-weight: 400;
 }
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;  /* ✅ changed from left to right */
+  z-index: 100;
+}
+
+.whatsapp-float {
+  position: fixed;
+  width: 55px;
+  height: 55px;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25D366; /* WhatsApp green */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.whatsapp-float iconify-icon {
+  font-size: 28px;
+  color: white; /* white icon */
+}
